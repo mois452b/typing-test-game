@@ -14,13 +14,60 @@
                 justify-content: center;
                 margin-top: 32px;
             }
+
+            section {
+                display: flex;
+                flex-direction: column;
+                padding: 16px;
+                gap: 16px;
+                max-width: 500px;
+            }
+            time {
+                color: yellow;
+            }
+            p {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 3px 8px;
+            }
+            input {
+                z-index: -999;
+                position: absolute;
+                pointer-events: none;
+                /* opacity: 0; */
+                top: 0;
+                left: 0;
+            }
+
+            letter {
+                color: gray;
+                position: relative;
+            }
+            letter.active::before {
+                content: '|';
+                color: white;
+                position: absolute;
+                left: -50%;
+                animation: 1s blink infinite step-end;
+            }
+
+            @keyframes blink {
+                /* 25% {
+                    opacity: 1;
+                } */
+                75% {
+                    opacity: 0;
+                }
+            }
         </style>
     </head>
     <body>
         <main>
-            <time>30</time>
-            <p></p>
-            <input autofocus>
+            <section id="game">
+                <time></time>
+                <p></p>
+                <input autofocus>
+            </section>
         </main>
     </body>
     <script src="index.js"></script>
