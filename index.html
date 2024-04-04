@@ -34,7 +34,7 @@
                 z-index: -999;
                 position: absolute;
                 pointer-events: none;
-                /* opacity: 0; */
+                opacity: 0;
                 top: 0;
                 left: 0;
             }
@@ -51,6 +51,20 @@
                 animation: 1s blink infinite step-end;
             }
 
+            letter.correct {
+                color: green;
+            }
+            letter.incorrect {
+                color: red;
+            }
+            letter.active.is-last::before {
+                left: 65%;
+            }
+
+            word.incorrect {
+                border-bottom: 2px solid red;
+            }
+
             @keyframes blink {
                 /* 25% {
                     opacity: 1;
@@ -58,6 +72,41 @@
                 75% {
                     opacity: 0;
                 }
+            }
+
+            #game {
+                display: flex;
+            }
+            #results {
+                display: none;
+            }
+            h3 {
+                font-weight: 400;
+                margin: 0;
+                font-size: 24px;
+                color: yellow;
+            }
+            h2 {
+                font-weight: 400;
+                margin: 0;
+                font-size: 16px;
+                opacity: .4;
+            }
+            #reset {
+                margin-top: 32px;
+                background: transparent;
+                padding: 12px 16px;
+                border-radius: 16px;
+                border: 0;
+                transition: all .4s ease;
+                cursor: pointer;
+                opacity: .4;
+                display: inline-block;
+            }
+            #reset:hover {
+                background: #ffffff20;
+                opacity: 1;
+                transform: scale(1.1)
             }
         </style>
     </head>
@@ -67,6 +116,19 @@
                 <time></time>
                 <p></p>
                 <input autofocus>
+            </section>
+            <section id="results">
+                <h2>wpm</h2>
+                <h3 id="wp3-results">10</h2>
+                <h2>accuracy</h2>
+                <h3 id="accuracy-results">20%</h2>
+                <button id="reset">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-reload" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19.933 13.041a8 8 0 1 1 -9.925 -8.788c3.899 -1 7.935 1.007 9.425 4.747" />
+                        <path d="M20 4v5h-5" />
+                      </svg>
+                </button>
             </section>
         </main>
     </body>
